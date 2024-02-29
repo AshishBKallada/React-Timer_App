@@ -1,49 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 export default function Timer() {
-    const [time,setTimer] = useState(0)
-    const [intervalId,setintervalId] = useState(null)
+  const [time, setTimer] = useState(0);
+  const [intervalId, setIntervalId] = useState(null);
 
+  const handleStart = () => {
+    clearInterval(intervalId); // Clear previous interval if it exists
+    const id = setInterval(() => {
+      setTimer(prev => prev + 1);
+    }, 1000);
+    setIntervalId(id);
+  };
 
-    const handleStart = () =>{
-        clearInterval(intervalId)
-       const id = setInterval(() =>{
-            setTimer(prev =>prev+1)
-        },1000)
-        setintervalId(id)
-    }
-    const handleStop = () =>{
-      clearInterval(intervalId)
-      setintervalId(null)
-    }
-    const handleRestart = () =>{
-        clearInterval(intervalId)
-        handleStart();
-    }
-    const handleReset = () =>{
-        clearInterval(intervalId)
-        setTimer(0)
-    }
-    
+  const handleStop = () => {
+    clearInterval(intervalId);
+    setIntervalId(null);
+  };
+
+  const handleReset = () => {
+    clearInterval(intervalId);
+    setTimer(0);
+  };
+
   return (
-    <div style={{'marginLeft':'600px'}}>
-        <h1>TIMER : {time}</h1>    
-      <button onClick={handleStart}>Start</button> &nbsp;
-
-    {time?(
-     intervalId? (
-      <button onClick={handleStop}>Pause</button> 
-      ) : (
-      <button onClick={handleRestart}>Continue</button> 
-      )
-
-    ):''
-      }
-      &nbsp;
-      <button onClick={handleReset}>Reset</button>
-
+    <div
+      style={{
+        marginLeft: '600px',
+        background: '#f0f0f0',
+        padding: '20px',
+        borderRadius: '10px',
+        position: 'relative',
+      }}
+    >
+      <h1 style={{ color:'black', position: 'absolute', top: '5%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        {time}
+      </h1>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+        <button onClick={handleStart} style={{ marginRight: '10px' }}>
+          Start
+        </button>
+        <button onClick={handleStop} style={{ marginRight: '10px' }}>
+          Stop
+        </button>
+        <button onClick={handleReset}>Reset</button>
+      </div>
     </div>
-  )
+  );
 }
-
-  
