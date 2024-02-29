@@ -5,7 +5,7 @@ export default function Timer() {
   const [intervalId, setIntervalId] = useState(null);
 
   const handleStart = () => {
-    clearInterval(intervalId); // Clear previous interval if it exists
+    clearInterval(intervalId); 
     const id = setInterval(() => {
       setTimer(prev => prev + 1);
     }, 1000);
