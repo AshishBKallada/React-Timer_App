@@ -30,6 +30,7 @@ export default function Timer() {
         padding: '20px',
         borderRadius: '10px',
         position: 'relative',
+        backgroundImage: 'url(https://img.freepik.com/free-photo/white-alarm-clock-yellow-green-background-flat-lay_169016-30337.jpg)',
       }}
     >
       <h1 style={{ color:'black', position: 'absolute', top: '5%', left: '50%', transform: 'translate(-50%, -50%)' }}>
